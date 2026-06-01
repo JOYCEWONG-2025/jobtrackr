@@ -12,9 +12,10 @@ class JobController extends Controller
      */
     public function index()
     {
-        $jobs = Job::all();
+        $jobs = auth()->user()->jobs()->latest()->get();
         return view('jobs.index', compact('jobs'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -29,10 +30,9 @@ class JobController extends Controller
      */
     public function store(Request $request)
     {
-        Job::create($request->all());
+        auth()->user()->jobs()->create($request->all());
         return redirect()->route('jobs.index');
     }
-
     /**
      * Display the specified resource.
      */

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+use App\Models\Job;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Database\Factories\UserFactory;
@@ -29,4 +30,10 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function jobs()
+    {
+        return $this->hasMany(Job::class);
+    }
+
 }
