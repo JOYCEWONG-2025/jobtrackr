@@ -1,58 +1,138 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# JobTrackr 🗂️
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A full-stack job application tracker built with Laravel 13 and Tailwind CSS. Track every application from first submission to final offer — all in one place.
 
-## About Laravel
+🔗 **Live Demo:** https://jobtrackr-production-4da5.up.railway.app
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Features
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+| Feature | Description |
+|---------|-------------|
+| 🔐 Authentication | Register, login, logout via Laravel Breeze |
+| 📋 Job Tracking | Add, edit, delete job applications |
+| 🏷️ Status Badges | Applied, Interview, Offer, Rejected — color coded |
+| 👤 User Ownership | Each user sees only their own applications |
+| 🔌 REST API | JSON endpoints protected with Laravel Sanctum |
+| 📱 Responsive | Clean UI built with Tailwind CSS v4 |
+| ☁️ Deployed | Live on Railway with persistent MySQL database |
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Tech Stack
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+| Layer | Technology |
+|-------|------------|
+| Backend | Laravel 13 (PHP 8.3) |
+| Frontend | Blade Templates, Tailwind CSS v4, Vite |
+| Auth | Laravel Breeze, Laravel Sanctum |
+| Database | MySQL (production), SQLite (local dev) |
+| Deployment | Railway |
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+---
 
-## Agentic Development
+## Getting Started
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+### Prerequisites
+
+- PHP 8.3+
+- Composer 2.x
+- Node.js & npm
+
+### Local Setup
 
 ```bash
-composer require laravel/boost --dev
+# 1. Clone the repository
+git clone https://github.com/JOYCEWONG-2025/jobtrackr.git
+cd jobtrackr
 
-php artisan boost:install
+# 2. Install dependencies
+composer install
+npm install
+
+# 3. Environment setup
+cp .env.example .env
+php artisan key:generate
+
+# 4. Database setup (SQLite for local)
+touch database/database.sqlite
+php artisan migrate
+
+# 5. Start development servers
+php artisan serve       # runs on http://localhost:8000
+npm run dev             # runs Vite in a separate terminal
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+---
 
-## Contributing
+## API Reference
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+All endpoints require authentication via Bearer token.
 
-## Code of Conduct
+```
+Authorization: Bearer {your_sanctum_token}
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `GET` | `/api/jobs` | List all jobs for authenticated user |
+| `POST` | `/api/jobs` | Create a new job application |
+| `GET` | `/api/jobs/{id}` | Get a specific job |
+| `PUT` | `/api/jobs/{id}` | Update a job application |
+| `DELETE` | `/api/jobs/{id}` | Delete a job application |
 
-## Security Vulnerabilities
+---
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Project Structure
 
-## License
+```
+jobtrackr/
+├── app/
+│   ├── Http/
+│   │   └── Controllers/
+│   │       ├── JobController.php        # Web CRUD controller
+│   │       └── Api/
+│   │           └── JobController.php    # REST API controller
+│   └── Models/
+│       ├── Job.php                      # Job model
+│       └── User.php                     # User model (hasMany jobs)
+├── database/
+│   └── migrations/                      # Database schema
+├── resources/
+│   └── views/
+│       └── jobs/
+│           ├── index.blade.php          # Applications list
+│           ├── create.blade.php         # Add application form
+│           └── edit.blade.php           # Edit application form
+└── routes/
+    ├── web.php                          # Web routes (auth protected)
+    └── api.php                          # API routes (Sanctum protected)
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+---
+
+## Database Schema
+
+**job_applications**
+
+| Column | Type | Description |
+|--------|------|-------------|
+| `id` | integer | Primary key |
+| `user_id` | integer | Foreign key to users |
+| `company` | string | Company name |
+| `role` | string | Job title |
+| `location` | string | Job location |
+| `status` | enum | applied / interview / offer / rejected |
+| `job_url` | string | Link to job posting |
+| `notes` | text | Personal notes |
+| `applied_at` | date | Date applied |
+| `follow_up_at` | date | Follow-up reminder date |
+| `created_at` | timestamp | Auto-generated |
+| `updated_at` | timestamp | Auto-generated |
+
+---
+
+
+**Joyce Wong**
+GitHub: [@JOYCEWONG-2025](https://github.com/JOYCEWONG-2025)
