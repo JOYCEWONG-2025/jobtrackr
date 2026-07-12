@@ -5,22 +5,31 @@
 
 <div class="min-h-screen flex relative overflow-hidden" style="background:linear-gradient(180deg,#DBEAFE 0%,#C7D2FE 45%,#FAF7F2 100%);">
 
-    <!-- Real noise grain (no moiré, unlike a repeating dot pattern) -->
-    <svg class="absolute inset-0 w-full h-full pointer-events-none opacity-[0.035]" xmlns="http://www.w3.org/2000/svg">
-        <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"/></filter>
-        <rect width="100%" height="100%" filter="url(#grain)"/>
-    </svg>
+    <!-- Dot-grid overlay — grid look up top, dot look on the flat footer -->
+    <div class="absolute inset-0 pointer-events-none opacity-[0.05]"
+         style="background-image:radial-gradient(#000 1px,transparent 1px);background-size:3px 3px;"></div>
 
-    <!-- ===== 90s City Pop Skyline (full, back to the original density) ===== -->
-    <svg class="absolute bottom-0 left-0 w-full h-[55%] pointer-events-none opacity-60" viewBox="0 0 1200 500" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- ===== 90s City Pop Skyline (full density, from the first code) ===== -->
+    <svg class="absolute bottom-0 left-0 w-full h-[55%] pointer-events-none" viewBox="0 0 1200 500" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <linearGradient id="skyFade" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#C7D2FE" stop-opacity="0"/>
+                <stop offset="100%" stop-color="#818CF8" stop-opacity="0.25"/>
+            </linearGradient>
+        </defs>
+        <rect x="0" y="0" width="1200" height="500" fill="url(#skyFade)"/>
+
         <circle cx="1000" cy="90" r="55" fill="#FDE68A" opacity="0.55"/>
+        <circle cx="1000" cy="90" r="55" fill="none" stroke="#F5D28C" stroke-width="1" opacity="0.4"/>
+
         <g fill="#FFFFFF" opacity="0.55">
             <ellipse cx="180" cy="70" rx="70" ry="18"/>
             <ellipse cx="230" cy="60" rx="50" ry="15"/>
             <ellipse cx="820" cy="130" rx="60" ry="14"/>
             <ellipse cx="870" cy="120" rx="40" ry="12"/>
         </g>
-        <g fill="#A5B4FC" opacity="0.5">
+
+        <g fill="#A5B4FC" opacity="0.55">
             <rect x="0" y="260" width="70" height="240"/>
             <rect x="90" y="220" width="55" height="280"/>
             <rect x="170" y="280" width="90" height="220"/>
@@ -28,14 +37,16 @@
             <rect x="1030" y="260" width="80" height="240"/>
             <rect x="1120" y="200" width="70" height="300"/>
         </g>
-        <g fill="#818CF8" opacity="0.55">
+
+        <g fill="#818CF8" opacity="0.7">
             <rect x="40" y="300" width="60" height="200"/>
             <rect x="260" y="240" width="45" height="260"/>
             <rect x="320" y="310" width="100" height="190"/>
             <rect x="880" y="290" width="70" height="210"/>
             <rect x="760" y="250" width="55" height="250"/>
         </g>
-        <g fill="#6D28D9" opacity="0.65">
+
+        <g fill="#6D28D9" opacity="0.85">
             <rect x="120" y="340" width="80" height="160"/>
             <rect x="220" y="360" width="50" height="140"/>
             <rect x="420" y="300" width="90" height="200"/>
@@ -48,7 +59,8 @@
             <rect x="1000" y="330" width="60" height="170"/>
             <rect x="1090" y="360" width="90" height="140"/>
         </g>
-        <g fill="#FDE68A" opacity="0.6">
+
+        <g fill="#FDE68A" opacity="0.7">
             <rect x="135" y="360" width="6" height="8"/><rect x="150" y="380" width="6" height="8"/>
             <rect x="440" y="330" width="6" height="8"/><rect x="460" y="360" width="6" height="8"/><rect x="480" y="390" width="6" height="8"/>
             <rect x="715" y="380" width="6" height="8"/><rect x="740" y="410" width="6" height="8"/>
@@ -61,9 +73,9 @@
     <div class="hidden lg:flex w-1/2 items-center justify-center px-16 relative z-10">
         <div class="max-w-xl">
 
-            <!-- Masthead — bold + backdrop panel so it reads over the skyline -->
-            <div class="inline-block bg-[#FFFDF8]/75 backdrop-blur-[2px] rounded px-4 py-2 border-t-2 border-b border-slate-700/70 mb-6">
-                <p class="uppercase tracking-[0.4em] text-[11px] font-semibold text-slate-700 text-center">
+            <!-- Masthead — no frame, plain text, underline below (first-code font family) -->
+            <div class="border-b border-slate-700/70 pb-2 mb-6">
+                <p class="uppercase tracking-[0.4em] text-[11px] text-slate-600 text-center">
                     Vol. I &nbsp;•&nbsp; Est. Today &nbsp;•&nbsp; Personal Edition
                 </p>
             </div>
@@ -78,7 +90,7 @@
                 Keep your applications, interviews and offers organized in one place.
             </p>
 
-            <!-- ===== Interactive Journal Card — distinct vintage-paper look, bold & clear text ===== -->
+            <!-- ===== Today's Notes — translucent glass card ===== -->
             <div
                 x-data="{
                     sets: [
@@ -111,33 +123,27 @@
                     }
                 }"
                 @click="next()"
-                class="mt-10 relative bg-[#FAF7F2] rounded-md p-6 shadow-xl border-2 border-slate-800/80 rotate-[-1deg] cursor-pointer select-none hover:shadow-2xl transition-shadow"
+                class="mt-10 relative bg-white/25 backdrop-blur-md rounded-2xl p-6 border border-white/50 shadow-xl rotate-[-1deg] cursor-pointer select-none hover:shadow-2xl transition-shadow"
                 title="Click to see more"
             >
-                <div class="absolute -top-3 left-8 w-16 h-5 bg-[#C7D2FE] rotate-[-3deg] rounded-sm shadow-sm border border-slate-800/20"></div>
-
                 <div x-show="show" x-transition.opacity.duration.200ms>
-                    <div class="flex items-center gap-2 mb-4">
-                        <div class="flex-1 h-[2px] bg-slate-800/70"></div>
-                        <p class="uppercase tracking-[0.25em] text-xs font-bold text-slate-800 whitespace-nowrap" style="font-family:'Playfair Display',serif;" x-text="sets[i].title"></p>
-                        <div class="flex-1 h-[2px] bg-slate-800/70"></div>
-                    </div>
+                    <p class="uppercase tracking-[0.25em] text-[11px] font-bold text-slate-800" style="font-family:'Playfair Display',serif;" x-text="sets[i].title"></p>
 
-                    <div class="space-y-3 text-sm">
+                    <div class="space-y-3 text-sm mt-4">
                         <template x-for="(item, idx) in sets[i].items" :key="idx">
                             <div class="flex gap-2 items-start">
                                 <span
                                     class="mt-0.5 font-bold"
-                                    :class="sets[i].kind === 'log' ? 'text-purple-600' : (sets[i].kind === 'quote' ? 'text-indigo-500' : 'text-slate-500')"
+                                    :class="sets[i].kind === 'log' ? 'text-purple-700' : (sets[i].kind === 'quote' ? 'text-indigo-600' : 'text-slate-600')"
                                     x-text="sets[i].kind === 'log' ? '✓' : (sets[i].kind === 'quote' ? '✦' : '•')"
                                 ></span>
-                                <p class="text-slate-800 font-medium" x-text="item"></p>
+                                <p class="text-slate-900 font-medium" x-text="item"></p>
                             </div>
                         </template>
                     </div>
-                </div>
 
-                <p class="mt-4 text-[11px] text-slate-500 font-semibold italic">tap to flip the page →</p>
+                    <p class="mt-4 text-[11px] text-slate-600 italic">tap to flip the page →</p>
+                </div>
             </div>
 
         </div>
@@ -146,9 +152,9 @@
     <!-- ===== Right Side — Login Card ===== -->
     <div class="w-full lg:w-1/2 flex items-center justify-center p-8 relative z-10">
 
-        <div class="w-full max-w-md bg-[#FFFDF8]/90 backdrop-blur-sm rounded-[32px] p-10 shadow-2xl border border-white/70">
+        <div class="w-full max-w-md bg-white/25 backdrop-blur-md rounded-[32px] p-10 border border-white/50 shadow-2xl">
 
-            <div class="text-center">
+            <div class="text-center bg-white/40 rounded-2xl px-6 py-5">
                 <p class="uppercase tracking-[0.25em] text-xs font-semibold text-slate-500 mb-2">JobTracker</p>
                 <h2 class="text-4xl text-slate-800" style="font-family:'Playfair Display',serif;">Welcome Back</h2>
                 <p class="text-slate-600 font-medium mt-3">Sign in to continue your journey.</p>
@@ -159,10 +165,9 @@
             <form method="POST" action="{{ route('login') }}" class="mt-8">
                 @csrf
 
-                <!-- Framed input — no black focus outline -->
                 <div>
                     <label class="block text-sm font-semibold text-slate-700 mb-2">Email Address</label>
-                    <div class="flex items-center rounded-2xl border-2 border-slate-300 bg-white px-4 outline-none focus-within:border-indigo-500 focus-within:ring-2 focus-within:ring-indigo-100 transition">
+                    <div class="flex items-center rounded-full border-2 border-slate-300 bg-white px-5 outline-none focus-within:border-indigo-500 focus-within:ring-2 focus-within:ring-indigo-100 transition">
                         <span class="text-indigo-400 mr-3">✉</span>
                         <input
                             type="email" name="email" value="{{ old('email') }}" required autofocus
@@ -174,7 +179,7 @@
 
                 <div class="mt-5">
                     <label class="block text-sm font-semibold text-slate-700 mb-2">Password</label>
-                    <div class="flex items-center rounded-2xl border-2 border-slate-300 bg-white px-4 outline-none focus-within:border-indigo-500 focus-within:ring-2 focus-within:ring-indigo-100 transition">
+                    <div class="flex items-center rounded-full border-2 border-slate-300 bg-white px-5 outline-none focus-within:border-indigo-500 focus-within:ring-2 focus-within:ring-indigo-100 transition">
                         <span class="text-indigo-400 mr-3">🔒</span>
                         <input
                             type="password" name="password" required
@@ -198,12 +203,12 @@
 
                 <button
                     type="submit"
-                    class="w-full mt-8 py-3 rounded-2xl bg-gradient-to-r from-indigo-500 to-violet-500 text-white font-semibold hover:opacity-90 transition"
+                    class="w-full mt-8 py-3 rounded-full bg-gradient-to-r from-indigo-500 to-violet-500 text-white font-semibold hover:opacity-90 transition"
                 >
                     Sign In
                 </button>
 
-                <div class="text-center mt-6 text-slate-500">
+                <div class="text-center mt-6 bg-white/50 rounded-full py-2 text-slate-700 text-sm">
                     Don't have an account?
                     <a href="{{ route('register') }}" class="text-indigo-600 font-semibold hover:text-indigo-700">
                         Register
