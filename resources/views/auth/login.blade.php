@@ -5,11 +5,11 @@
 
 <div class="min-h-screen flex relative overflow-hidden" style="background:linear-gradient(180deg,#DBEAFE 0%,#C7D2FE 45%,#FAF7F2 100%);">
 
-    <!-- Dot-grid overlay — grid look up top, dot look on the flat footer -->
+    <!-- Dot-grid overlay -->
     <div class="absolute inset-0 pointer-events-none opacity-[0.05]"
          style="background-image:radial-gradient(#000 1px,transparent 1px);background-size:3px 3px;"></div>
 
-    <!-- ===== 90s City Pop Skyline (full density, from the first code) ===== -->
+    <!-- ===== 90s City Pop Skyline ===== -->
     <svg class="absolute bottom-0 left-0 w-full h-[55%] pointer-events-none" viewBox="0 0 1200 500" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
         <defs>
             <linearGradient id="skyFade" x1="0" y1="0" x2="0" y2="1">
@@ -73,24 +73,27 @@
     <div class="hidden lg:flex w-1/2 items-center justify-center px-16 relative z-10">
         <div class="max-w-xl">
 
-            <!-- Masthead — no frame, plain text, underline below (first-code font family) -->
             <div class="border-b border-slate-700/70 pb-2 mb-6">
                 <p class="uppercase tracking-[0.4em] text-[11px] text-slate-600 text-center">
                     Vol. I &nbsp;•&nbsp; Est. Today &nbsp;•&nbsp; Personal Edition
                 </p>
             </div>
 
-            <p class="uppercase tracking-[0.35em] text-xs font-bold text-slate-600 mb-3 bg-[#FFFDF8]/60 inline-block px-2 rounded">Career Chronicle</p>
+            <p class="uppercase tracking-[0.35em] text-xs font-bold text-slate-600 mb-3 inline-block px-2 py-1 rounded"
+               style="background:rgba(255,253,248,0.65);">
+                Career Chronicle
+            </p>
 
-            <h1 class="text-6xl leading-[1.05] text-slate-900 font-semibold drop-shadow-[0_2px_10px_rgba(255,253,248,0.9)]" style="font-family:'Playfair Display',serif;">
+            <h1 class="text-6xl leading-[1.05] text-slate-900 font-semibold" style="font-family:'Playfair Display',serif;">
                 Every Opportunity<br>Has A Story
             </h1>
 
-            <p class="mt-6 text-lg text-slate-700 font-medium leading-relaxed max-w-lg bg-[#FFFDF8]/55 backdrop-blur-[2px] rounded-lg px-3 py-2 inline-block">
+            <p class="mt-6 text-lg text-slate-700 font-medium leading-relaxed max-w-lg rounded-lg px-3 py-2 inline-block"
+               style="background:rgba(255,253,248,0.6);">
                 Keep your applications, interviews and offers organized in one place.
             </p>
 
-            <!-- ===== Today's Notes — translucent glass card ===== -->
+            <!-- ===== Today's Notes — solid rgba background (guaranteed to render) ===== -->
             <div
                 x-data="{
                     sets: [
@@ -123,7 +126,8 @@
                     }
                 }"
                 @click="next()"
-                class="mt-10 relative bg-white/25 backdrop-blur-md rounded-2xl p-6 border border-white/50 shadow-xl rotate-[-1deg] cursor-pointer select-none hover:shadow-2xl transition-shadow"
+                class="mt-10 relative rounded-2xl p-6 rotate-[-1deg] cursor-pointer select-none transition-shadow"
+                style="background:rgba(255,255,255,0.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.7);box-shadow:0 10px 30px -8px rgba(76,29,149,0.35);"
                 title="Click to see more"
             >
                 <div x-show="show" x-transition.opacity.duration.200ms>
@@ -152,9 +156,10 @@
     <!-- ===== Right Side — Login Card ===== -->
     <div class="w-full lg:w-1/2 flex items-center justify-center p-8 relative z-10">
 
-        <div class="w-full max-w-md bg-white/25 backdrop-blur-md rounded-[32px] p-10 border border-white/50 shadow-2xl">
+        <div class="w-full max-w-md rounded-[32px] p-10"
+             style="background:rgba(255,255,255,0.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.7);box-shadow:0 25px 50px -12px rgba(76,29,149,0.35);">
 
-            <div class="text-center bg-white/40 rounded-2xl px-6 py-5">
+            <div class="text-center rounded-2xl px-6 py-5" style="background:rgba(255,255,255,0.55);">
                 <p class="uppercase tracking-[0.25em] text-xs font-semibold text-slate-500 mb-2">JobTracker</p>
                 <h2 class="text-4xl text-slate-800" style="font-family:'Playfair Display',serif;">Welcome Back</h2>
                 <p class="text-slate-600 font-medium mt-3">Sign in to continue your journey.</p>
@@ -203,12 +208,14 @@
 
                 <button
                     type="submit"
-                    class="w-full mt-8 py-3 rounded-full bg-gradient-to-r from-indigo-500 to-violet-500 text-white font-semibold hover:opacity-90 transition"
+                    class="w-full mt-8 py-3 rounded-full text-white font-semibold transition"
+                    style="background:linear-gradient(90deg,#6366F1,#7C3AED);"
+                    onmouseover="this.style.opacity=0.9" onmouseout="this.style.opacity=1"
                 >
                     Sign In
                 </button>
 
-                <div class="text-center mt-6 bg-white/50 rounded-full py-2 text-slate-700 text-sm">
+                <div class="text-center mt-6 rounded-full py-2 text-slate-700 text-sm" style="background:rgba(255,255,255,0.6);">
                     Don't have an account?
                     <a href="{{ route('register') }}" class="text-indigo-600 font-semibold hover:text-indigo-700">
                         Register
