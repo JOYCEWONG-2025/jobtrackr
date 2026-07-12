@@ -3,23 +3,42 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-<div class="min-h-screen flex bg-gradient-to-br from-[#FFFDF8] via-[#F8FAFC] to-[#EEF2FF] overflow-hidden">
+<div class="min-h-screen flex bg-gradient-to-br from-[#FFFDF8] via-[#DBEAFE] to-[#C7D2FE] overflow-hidden relative">
+
+    <!-- Decorative Background -->
+    <div class="absolute inset-0 pointer-events-none">
+
+        <div class="absolute top-16 left-24 text-7xl opacity-10">☁</div>
+        <div class="absolute top-40 right-32 text-6xl opacity-10">☁</div>
+        <div class="absolute bottom-52 left-32 text-5xl opacity-10">☁</div>
+
+        <div class="absolute top-64 right-24 text-4xl opacity-30 rotate-12">
+            ✈
+        </div>
+
+        <div class="absolute top-24 right-1/3 text-xl opacity-30">
+            ✦
+        </div>
+
+        <div class="absolute bottom-60 right-1/4 text-xl opacity-30">
+            ✦
+        </div>
+
+        <div class="absolute bottom-0 left-0 w-full h-40 bg-gradient-to-t from-[#BFD3FF]/40 to-transparent"></div>
+
+    </div>
 
     <!-- Left Side -->
-    <div class="hidden lg:flex w-1/2 relative items-center justify-center px-16">
+    <div class="hidden lg:flex w-1/2 items-center justify-center px-16 relative z-10">
 
-        <!-- Background Decorations -->
-        <div class="absolute top-20 left-20 w-40 h-40 bg-blue-200/30 rounded-full blur-3xl"></div>
-        <div class="absolute bottom-20 right-20 w-48 h-48 bg-violet-200/40 rounded-full blur-3xl"></div>
+        <div class="max-w-xl">
 
-        <div class="relative max-w-xl">
-
-            <p class="uppercase tracking-[0.3em] text-xs text-slate-500 mb-4">
+            <p class="uppercase tracking-[0.35em] text-xs text-slate-500 mb-5">
                 Career Chronicle
             </p>
 
             <h1
-                class="text-6xl leading-none text-slate-800"
+                class="text-7xl leading-[0.95] text-slate-800"
                 style="font-family:'Playfair Display',serif;"
             >
                 Every
@@ -27,67 +46,44 @@
                 Has A Story
             </h1>
 
-            <p class="mt-6 text-lg text-slate-600 leading-relaxed">
+            <p class="mt-8 text-lg text-slate-600 leading-relaxed max-w-lg">
                 Keep your applications, interviews and offers organized in one place.
             </p>
 
-            <!-- Journal Card -->
-            <div class="mt-10 bg-white/80 backdrop-blur-sm rounded-[28px] p-6 shadow-xl border border-slate-100">
+            <div class="mt-10 bg-white/70 backdrop-blur-sm rounded-[30px] p-7 shadow-xl border border-white/50">
 
-                <div class="flex items-center justify-between mb-5">
-                    <h3 class="font-semibold text-slate-800">
-                        Today's Notes
-                    </h3>
-
-                    <span class="text-xs text-slate-400">
-                        Career Journal
-                    </span>
-                </div>
+                <p class="uppercase tracking-[0.25em] text-xs text-slate-400 mb-5">
+                    Career Journal
+                </p>
 
                 <div class="space-y-4">
 
-                    <div class="flex items-start gap-3">
-                        <span class="text-green-500 mt-1">✓</span>
-                        <div>
-                            <p class="font-medium text-slate-800">
-                                PETRONAS Internship
-                            </p>
-                            <p class="text-sm text-slate-500">
-                                Interview Scheduled
-                            </p>
-                        </div>
+                    <div class="flex gap-3">
+                        <span class="text-violet-500">✦</span>
+                        <p class="text-slate-600">
+                            Every application begins with a possibility.
+                        </p>
                     </div>
 
-                    <div class="flex items-start gap-3">
-                        <span class="text-blue-500 mt-1">✓</span>
-                        <div>
-                            <p class="font-medium text-slate-800">
-                                Shell Graduate Programme
-                            </p>
-                            <p class="text-sm text-slate-500">
-                                Application Submitted
-                            </p>
-                        </div>
+                    <div class="flex gap-3">
+                        <span class="text-blue-500">✦</span>
+                        <p class="text-slate-600">
+                            Every interview becomes a learning experience.
+                        </p>
                     </div>
 
-                    <div class="flex items-start gap-3">
-                        <span class="text-violet-500 mt-1">✓</span>
-                        <div>
-                            <p class="font-medium text-slate-800">
-                                Maybank Analyst
-                            </p>
-                            <p class="text-sm text-slate-500">
-                                Offer Received
-                            </p>
-                        </div>
+                    <div class="flex gap-3">
+                        <span class="text-indigo-500">✦</span>
+                        <p class="text-slate-600">
+                            Every offer marks a new chapter.
+                        </p>
                     </div>
 
                 </div>
 
             </div>
 
-            <!-- Tiny Editorial Line -->
-            <p class="mt-8 text-sm text-slate-400 italic">
+            <p class="mt-8 text-sm italic text-slate-400">
                 A personal record of opportunities, progress and achievements.
             </p>
 
@@ -95,10 +91,10 @@
 
     </div>
 
-    <!-- Right Side -->
-    <div class="w-full lg:w-1/2 flex items-center justify-center p-8">
+    <!-- Login Card -->
+    <div class="w-full lg:w-1/2 flex items-center justify-center p-8 relative z-10">
 
-        <div class="w-full max-w-md bg-[#FFFDF8] rounded-[32px] p-10 shadow-2xl border border-slate-200">
+        <div class="w-full max-w-md bg-[#FFFDF8]/90 backdrop-blur-sm rounded-[32px] p-10 shadow-2xl border border-white/70">
 
             <div class="text-center">
 
