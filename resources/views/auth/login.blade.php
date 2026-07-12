@@ -1,91 +1,122 @@
 <x-guest-layout>
-<div class="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 flex items-center justify-center px-4">
-    <div class="w-full max-w-5xl flex rounded-3xl shadow-xl overflow-hidden bg-white">
 
-        <!-- Left Panel -->
-        <div class="hidden lg:flex w-1/2 bg-gradient-to-br from-blue-600 via-blue-700 to-purple-700 p-12 flex-col justify-between">
-            <div>
-                <div class="flex items-center gap-3 mb-12">
-                    <div class="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center">
-                        <span class="text-white font-bold text-sm">JT</span>
-                    </div>
-                    <span class="text-white font-bold text-xl">JobTrackr</span>
-                </div>
-                <h2 class="text-4xl font-bold text-white leading-tight mb-4">
-                    Your career journey,<br>organized.
-                </h2>
-                <p class="text-blue-100 text-lg">
-                    Track every application from submission to offer in one clean dashboard.
-                </p>
-            </div>
-            <div class="grid grid-cols-3 gap-4">
-                <div class="bg-white/10 rounded-2xl p-4 text-center">
-                    <div class="text-2xl font-bold text-white">500+</div>
-                    <div class="text-blue-200 text-xs mt-1">Applications</div>
-                </div>
-                <div class="bg-white/10 rounded-2xl p-4 text-center">
-                    <div class="text-2xl font-bold text-white">80%</div>
-                    <div class="text-blue-200 text-xs mt-1">Interview Rate</div>
-                </div>
-                <div class="bg-white/10 rounded-2xl p-4 text-center">
-                    <div class="text-2xl font-bold text-white">24/7</div>
-                    <div class="text-blue-200 text-xs mt-1">Tracking</div>
-                </div>
-            </div>
-        </div>
+<div class="min-h-screen flex">
 
-        <!-- Right Panel -->
-        <div class="w-full lg:w-1/2 p-10 flex flex-col justify-center">
-            <div class="mb-8">
-                <h2 class="text-2xl font-bold text-gray-900">Welcome back</h2>
-                <p class="text-gray-500 text-sm mt-1">Sign in to your JobTrackr account</p>
-            </div>
+    <!-- Left -->
+    <div class="hidden lg:flex w-1/2 items-center justify-center px-20">
 
-            <x-auth-session-status class="mb-4" :status="session('status')" />
+        <div class="max-w-xl">
 
-            <form method="POST" action="{{ route('login') }}" class="space-y-5">
-                @csrf
+            <span class="px-4 py-2 rounded-full bg-blue-100 text-blue-700 text-sm font-medium">
+                JobTracker
+            </span>
 
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1.5">Email address</label>
-                    <input type="email" name="email" value="{{ old('email') }}" required autofocus
-                        placeholder="you@example.com"
-                        class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-gray-50 transition">
-                    <x-input-error :messages="$errors->get('email')" class="mt-1.5" />
-                </div>
+            <h1 class="mt-6 text-6xl font-bold text-slate-900 leading-tight">
+                Track Your Career Journey
+            </h1>
 
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1.5">Password</label>
-                    <input type="password" name="password" required
-                        placeholder="••••••••"
-                        class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-gray-50 transition">
-                    <x-input-error :messages="$errors->get('password')" class="mt-1.5" />
-                </div>
-
-                <div class="flex items-center justify-between">
-                    <label class="flex items-center gap-2 text-sm text-gray-600 cursor-pointer">
-                        <input type="checkbox" name="remember" class="rounded border-gray-300 text-blue-600 focus:ring-blue-500">
-                        Remember me
-                    </label>
-                    @if (Route::has('password.request'))
-                        <a href="{{ route('password.request') }}" class="text-sm text-blue-600 hover:text-purple-600 font-medium transition">
-                            Forgot password?
-                        </a>
-                    @endif
-                </div>
-
-                <button type="submit"
-                    class="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white py-3 rounded-xl text-sm font-semibold transition shadow-sm">
-                    Sign in
-                </button>
-            </form>
-
-            <p class="text-center text-sm text-gray-500 mt-6">
-                Don't have an account?
-                <a href="{{ route('register') }}" class="text-blue-600 hover:text-purple-600 font-semibold transition">Create one</a>
+            <p class="mt-6 text-lg text-slate-600">
+                Stay organized from application to offer letter.
             </p>
+
+            <div class="mt-10 bg-white rounded-3xl p-6 shadow-xl border border-slate-100">
+
+                <div class="flex justify-between">
+                    <div>
+                        <p class="text-slate-500 text-sm">Applications</p>
+                        <h3 class="text-3xl font-bold">24</h3>
+                    </div>
+
+                    <div>
+                        <p class="text-slate-500 text-sm">Interviews</p>
+                        <h3 class="text-3xl font-bold text-blue-600">5</h3>
+                    </div>
+
+                    <div>
+                        <p class="text-slate-500 text-sm">Offers</p>
+                        <h3 class="text-3xl font-bold text-violet-600">2</h3>
+                    </div>
+                </div>
+
+            </div>
+
         </div>
 
     </div>
+
+    <!-- Right -->
+    <div class="w-full lg:w-1/2 flex items-center justify-center p-8">
+
+        <div class="w-full max-w-md bg-white rounded-3xl p-10 shadow-2xl border border-slate-100">
+
+            <div class="text-center">
+
+                <div class="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-r from-blue-500 to-violet-500 flex items-center justify-center text-white font-bold text-xl">
+                    JT
+                </div>
+
+                <h2 class="mt-4 text-3xl font-bold text-slate-900">
+                    Welcome Back
+                </h2>
+
+                <p class="mt-2 text-slate-500">
+                    Sign in to continue
+                </p>
+
+            </div>
+
+            <form method="POST" action="{{ route('login') }}" class="mt-8">
+                @csrf
+
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="Email Address"
+                    required
+                    class="w-full rounded-xl border-slate-200 focus:border-blue-500 focus:ring-blue-500">
+
+                <input
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                    required
+                    class="w-full mt-4 rounded-xl border-slate-200 focus:border-blue-500 focus:ring-blue-500">
+
+                <div class="flex justify-between items-center mt-4 text-sm">
+
+                    <label class="flex items-center gap-2 text-slate-500">
+                        <input type="checkbox" name="remember">
+                        Remember me
+                    </label>
+
+                    <a href="{{ route('password.request') }}"
+                       class="text-blue-600 hover:text-blue-700">
+                        Forgot Password?
+                    </a>
+
+                </div>
+
+                <button
+                    type="submit"
+                    class="w-full mt-6 py-3 rounded-xl bg-gradient-to-r from-blue-500 to-violet-500 text-white font-semibold">
+                    Log In
+                </button>
+
+                <p class="text-center mt-6 text-slate-500">
+                    Don't have an account?
+
+                    <a href="{{ route('register') }}"
+                       class="text-blue-600 font-semibold">
+                        Register
+                    </a>
+                </p>
+
+            </form>
+
+        </div>
+
+    </div>
+
 </div>
+
 </x-guest-layout>

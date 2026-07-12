@@ -13,9 +13,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="font-[Inter] antialiased">
-
+<body class="font-[Inter] antialiased bg-gradient-to-br from-sky-50 via-white to-violet-50">
     {{ $slot }}
-
 </body>
 </html>
