@@ -5,22 +5,21 @@
 
 <style>
     .jt-glass-card { background: rgba(255, 253, 248, 0.75); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); border: 1px solid rgba(203, 213, 225, 0.5); }
-    .jt-card { background: rgba(250, 247, 242, 0.95); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+    .jt-card { background: rgba(250, 247, 242, 0.8); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
     .jt-register-pill { background: rgba(255, 255, 255, 0.5); }
     .jt-field::placeholder { color: #94a3b8; opacity: 1; }
     .jt-field { color: #334155; }
-    [x-cloak] { display: none !important; }
 </style>
 
-<div x-data="{ showForm: false }" class="min-h-screen flex relative overflow-hidden" style="background:linear-gradient(180deg,#DBEAFE 0%,#C7D2FE 45%,#FAF7F2 100%);">
+<div class="min-h-screen flex relative overflow-hidden" style="background:linear-gradient(180deg,#DBEAFE 0%,#C7D2FE 45%,#FAF7F2 100%);">
 
     <!-- Full-page dot-grid overlay -->
     <div class="absolute inset-0 pointer-events-none opacity-[0.05]"
          style="background-image:radial-gradient(#000 1px,transparent 1px);background-size:3px 3px;"></div>
 
-    <!-- Clean scrim behind the wording block ONLY -->
-    <div class="hidden lg:block"
-         style="position:absolute; top:0; left:0; width:50%; height:64%; pointer-events:none; background: radial-gradient(65% 65% at 35% 40%, rgba(255,253,248,0.7), transparent 70%);"></div>
+    <!-- Clean scrim behind the wording block ONLY — fades out, no hard edge -->
+   <div class="hidden lg:block"
+     style="position:absolute; top:0; left:0; width:50%; height:52%; pointer-events:none; background: radial-gradient(65% 60% at 35% 35%, rgba(255,253,248,0.7), transparent 70%);"></div>
 
     <!-- ===== Skyline ===== -->
     <svg class="absolute bottom-0 left-0 w-full h-[55%] pointer-events-none opacity-60" viewBox="0 0 1200 500" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
@@ -68,9 +67,9 @@
         </g>
     </svg>
 
-    <!-- ===== Left Side — now full-width centered ===== -->
-    <div class="flex w-full items-center justify-center px-6 lg:px-16 relative z-10">
-        <div class="max-w-xl w-full">
+    <!-- ===== Left Side ===== -->
+    <div class="hidden lg:flex w-1/2 items-center justify-center px-16 relative z-10">
+        <div class="max-w-xl">
 
             <div class="mb-6">
                 <p class="uppercase tracking-[0.4em] text-[11px] text-slate-600 border-b border-slate-700/70 pb-2 inline-block">
@@ -87,11 +86,9 @@
                 Create your chronicle — one home for every application, interview, and offer.
             </p>
 
-            <!-- ===== Membership / Boarding-pass card — click to open the register form ===== -->
-            <div
-                @click="showForm = true"
-                class="jt-glass-card mt-10 relative rounded-xl shadow-xl rotate-[1deg] select-none overflow-hidden cursor-pointer transition-transform hover:rotate-0 hover:scale-[1.01]"
-            >
+            <!-- ===== Membership / Boarding-pass style card ===== -->
+            <div class="jt-glass-card mt-10 relative rounded-xl shadow-xl rotate-[1deg] select-none overflow-hidden">
+
                 <div class="flex items-center justify-between px-6 pt-5">
                     <p class="uppercase tracking-[0.3em] text-[10px] font-bold text-slate-500">Member Pass</p>
                     <p class="uppercase tracking-[0.2em] text-[10px] font-bold text-purple-600">
@@ -121,45 +118,15 @@
                         <span class="w-1 h-1 rounded-full bg-slate-300"></span>
                     @endfor
                 </div>
-
-                <p class="text-center text-[11px] text-slate-500 italic pb-3">tap to enroll →</p>
             </div>
 
         </div>
     </div>
 
-    <!-- ===== Register Form — modal, triggered by the Member Pass card ===== -->
-    <div
-        x-show="showForm"
-        x-cloak
-        @keydown.escape.window="showForm = false"
-        class="fixed inset-0 z-50 flex items-center justify-center p-4"
-        style="background: rgba(30, 27, 60, 0.45); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);"
-        x-transition:enter="transition ease-out duration-250"
-        x-transition:enter-start="opacity-0"
-        x-transition:enter-end="opacity-100"
-        x-transition:leave="transition ease-in duration-150"
-        x-transition:leave-start="opacity-100"
-        x-transition:leave-end="opacity-0"
-        @click="showForm = false"
-    >
-        <div
-            @click.stop
-            x-show="showForm"
-            x-transition:enter="transition ease-out duration-250"
-            x-transition:enter-start="opacity-0 scale-95"
-            x-transition:enter-end="opacity-100 scale-100"
-            x-transition:leave="transition ease-in duration-150"
-            x-transition:leave-start="opacity-100 scale-100"
-            x-transition:leave-end="opacity-0 scale-95"
-            class="jt-card w-full max-w-md rounded-2xl p-10 shadow-2xl border-2 border-slate-900 relative max-h-[90vh] overflow-y-auto"
-        >
-            <button
-                @click="showForm = false"
-                type="button"
-                class="absolute top-4 right-4 w-8 h-8 rounded-full flex items-center justify-center text-slate-500 hover:text-slate-800 hover:bg-slate-100 transition text-lg"
-                aria-label="Close"
-            >&times;</button>
+    <!-- ===== Right Side — Register Card ===== -->
+    <div class="w-full lg:w-1/2 flex items-center justify-center p-8 relative z-10">
+
+        <div class="jt-card w-full max-w-md rounded-2xl p-10 shadow-2xl border-2 border-slate-900">
 
             <div class="text-center mb-8">
                 <p class="uppercase tracking-[0.25em] text-xs font-bold text-slate-400 mb-2">JobTracker</p>
@@ -175,7 +142,7 @@
                     <label class="block text-sm font-semibold text-slate-700 mb-2">Full Name</label>
                     <div class="flex items-center rounded-lg border-2 border-[#C7D2FE] bg-white px-4 outline-none focus-within:border-[#7C3AED] transition">
                         <span class="text-[#818CF8] mr-3">🖊</span>
-                        <input type="text" name="name" value="{{ old('name') }}" required
+                        <input type="text" name="name" value="{{ old('name') }}" required autofocus
                             placeholder="Your Full Name"
                             class="jt-field w-full py-3 border-0 bg-transparent outline-none focus:outline-none focus:ring-0 font-medium">
                     </div>
