@@ -2,7 +2,9 @@
 
 A full-stack job application tracker built with Laravel 13 and Tailwind CSS. Track every application from first submission to final offer — all in one place.
 
-🔗 **Live Demo:** https://jobtrackr-production-4da5.up.railway.app
+🔗 **Live Demo:** https://jobtrackr-production-4da5.up.railway.app (currently under maintenance)
+
+Use this website instead: https://jobtracker-7cb9.onrender.com/login
 
 ---
 
