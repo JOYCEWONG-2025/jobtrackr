@@ -12,63 +12,49 @@
 
 <div class="min-h-screen flex items-center justify-center relative overflow-hidden px-4" style="background:linear-gradient(180deg,#DBEAFE 0%,#C7D2FE 45%,#FAF7F2 100%);">
 
-    <!-- Header Layer: Moiré Grid Pattern -->
-    <div class="absolute top-0 left-0 w-full h-[45%] pointer-events-none opacity-[0.05]"
-         style="background-image: linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px); background-size: 3px 3px;"></div>
+    <!-- Full-page dot-grid overlay -->
+    <div class="absolute inset-0 pointer-events-none opacity-[0.05]"
+         style="background-image:radial-gradient(#000 1px,transparent 1px);background-size:3px 3px;"></div>
 
-    <!-- Footer Layer: Dot Pattern -->
-    <div class="absolute bottom-0 left-0 w-full h-[12%] pointer-events-none opacity-[0.07]"
-         style="background-image: radial-gradient(#000 1.5px, transparent 1.5px); background-size: 8px 8px;"></div>
-
-    <!-- ===== Skyline ===== -->
-    <svg class="absolute bottom-0 left-0 w-full h-[45%] pointer-events-none opacity-60" viewBox="0 0 1200 500" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="1000" cy="90" r="55" fill="#FDE68A" opacity="0.55"/>
-        <g fill="#FFFFFF" opacity="0.55">
-            <ellipse cx="180" cy="70" rx="70" ry="18"/>
-            <ellipse cx="230" cy="60" rx="50" ry="15"/>
-            <ellipse cx="820" cy="130" rx="60" ry="14"/>
-            <ellipse cx="870" cy="120" rx="40" ry="12"/>
-        </g>
+    <!-- ===== Small skyline, just as an accent along the base ===== -->
+    <svg class="absolute bottom-0 left-0 w-full h-[30%] pointer-events-none opacity-45" viewBox="0 0 1200 300" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
         <g fill="#A5B4FC" opacity="0.5">
-            <rect x="0" y="260" width="70" height="240"/>
-            <rect x="90" y="220" width="55" height="280"/>
-            <rect x="170" y="280" width="90" height="220"/>
-            <rect x="950" y="230" width="60" height="270"/>
-            <rect x="1030" y="260" width="80" height="240"/>
-            <rect x="1120" y="200" width="70" height="300"/>
+            <rect x="0" y="140" width="60" height="160"/>
+            <rect x="1140" y="120" width="60" height="180"/>
         </g>
         <g fill="#818CF8" opacity="0.55">
-            <rect x="40" y="300" width="60" height="200"/>
-            <rect x="260" y="240" width="45" height="260"/>
-            <rect x="320" y="310" width="100" height="190"/>
-            <rect x="880" y="290" width="70" height="210"/>
-            <rect x="760" y="250" width="55" height="250"/>
+            <rect x="80" y="170" width="50" height="130"/>
+            <rect x="1030" y="160" width="70" height="140"/>
         </g>
-        <g fill="#6D28D9" opacity="0.65">
-            <rect x="120" y="340" width="80" height="160"/>
-            <rect x="220" y="360" width="50" height="140"/>
-            <rect x="420" y="300" width="90" height="200"/>
-            <rect x="520" y="380" width="60" height="120"/>
-            <polygon points="620,500 645,320 655,320 680,500"/>
-            <rect x="638" y="300" width="24" height="22"/>
-            <rect x="700" y="350" width="70" height="150"/>
-            <rect x="800" y="320" width="55" height="180"/>
-            <rect x="900" y="370" width="75" height="130"/>
-            <rect x="1000" y="330" width="60" height="170"/>
-            <rect x="1090" y="360" width="90" height="140"/>
+        <g fill="#6D28D9" opacity="0.6">
+            <polygon points="600,300 620,160 630,160 650,300"/>
+            <rect x="618" y="145" width="14" height="16"/>
+            <rect x="900" y="200" width="60" height="100"/>
+            <rect x="240" y="190" width="55" height="110"/>
         </g>
     </svg>
 
     <div class="w-full max-w-md relative z-10">
 
+        <!-- ===== Lost & Found Desk concept ===== -->
         <div class="text-center mb-8">
-            <p class="uppercase tracking-[0.25em] text-xs font-bold text-slate-500 mb-2">JobTracker</p>
-            <h2 class="text-4xl text-slate-800 font-semibold drop-shadow-[0_2px_10px_rgba(255,253,248,0.3)]" style="font-family:'Playfair Display',serif;">Reset Your Password</h2>
-            <div class="w-10 h-[2px] bg-[#C7D2FE] mx-auto mt-4"></div>
-            <p class="text-slate-600 font-semibold mt-4 text-sm">Enter your email and we'll send you a reset link</p>
+            <p class="uppercase tracking-[0.4em] text-[11px] text-slate-600 border-b border-slate-700/70 pb-2 inline-block">
+                Vol. I &nbsp;•&nbsp; Recovery Desk &nbsp;•&nbsp; Personal Edition
+            </p>
+            <p class="uppercase tracking-[0.35em] text-xs font-bold text-slate-500 mt-3">Lost &amp; Found</p>
+
+            <h2 class="text-4xl text-slate-800 mt-4 drop-shadow-[0_2px_10px_rgba(255,253,248,0.3)]" style="font-family:'Playfair Display',serif;">
+                Misplaced Your Key?
+            </h2>
+            <p class="text-slate-600 font-medium mt-3 text-sm max-w-sm mx-auto">
+                Leave your email at the desk — we'll send a new one straight to your inbox.
+            </p>
         </div>
 
-        <div class="jt-card rounded-2xl p-10 shadow-2xl border-2 border-slate-900">
+        <div class="jt-card rounded-2xl p-10 shadow-2xl border-2 border-slate-900 relative">
+
+            <!-- little envelope tab accent -->
+            <div class="absolute -top-3 left-8 w-16 h-5 bg-[#C7D2FE]/70 rotate-[-3deg] rounded-sm shadow-sm"></div>
 
             <x-auth-session-status class="mb-4 text-green-600" :status="session('status')" />
 

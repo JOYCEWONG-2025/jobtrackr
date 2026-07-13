@@ -13,13 +13,9 @@
 
 <div class="min-h-screen flex relative overflow-hidden" style="background:linear-gradient(180deg,#DBEAFE 0%,#C7D2FE 45%,#FAF7F2 100%);">
 
-    <!-- Header Layer: Moiré Grid Pattern -->
-    <div class="absolute top-0 left-0 w-full h-[45%] pointer-events-none opacity-[0.05]"
-         style="background-image: linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px); background-size: 3px 3px;"></div>
-
-    <!-- Footer Layer: Dot Pattern -->
-    <div class="absolute bottom-0 left-0 w-full h-[12%] pointer-events-none opacity-[0.07]"
-         style="background-image: radial-gradient(#000 1.5px, transparent 1.5px); background-size: 8px 8px;"></div>
+    <!-- Full-page dot-grid overlay (original login style) -->
+    <div class="absolute inset-0 pointer-events-none opacity-[0.05]"
+         style="background-image:radial-gradient(#000 1px,transparent 1px);background-size:3px 3px;"></div>
 
     <!-- ===== Skyline ===== -->
     <svg class="absolute bottom-0 left-0 w-full h-[55%] pointer-events-none opacity-60" viewBox="0 0 1200 500" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
@@ -67,46 +63,56 @@
         </g>
     </svg>
 
-    <!-- ===== Left Side — Storytelling ===== -->
+    <!-- ===== Left Side — Membership Card concept ===== -->
     <div class="hidden lg:flex w-1/2 items-center justify-center px-16 relative z-10">
         <div class="max-w-xl">
 
             <div class="mb-6">
                 <p class="uppercase tracking-[0.4em] text-[11px] text-slate-600 border-b border-slate-700/70 pb-2 inline-block">
-                    Vol. I &nbsp;•&nbsp; Est. Today &nbsp;•&nbsp; Personal Edition
+                    Vol. II &nbsp;•&nbsp; New Entry &nbsp;•&nbsp; Personal Edition
                 </p>
                 <p class="uppercase tracking-[0.35em] text-xs font-bold text-slate-500 mt-3">Career Chronicle</p>
             </div>
 
             <h1 class="text-5xl leading-[1.1] text-slate-800" style="font-family:'Playfair Display',serif;">
-                Start Tracking<br>Your Applications
+                Your Story<br>Starts Here
             </h1>
 
             <p class="mt-6 text-lg text-slate-600 font-medium leading-relaxed max-w-lg">
-                Join job seekers who stay organized and land their dream roles faster.
+                Create your chronicle — one home for every application, interview, and offer.
             </p>
 
-            <!-- Feature checklist card -->
-            <div class="jt-glass-card mt-10 relative rounded-xl p-6 shadow-xl rotate-[-1deg] select-none">
-                <div class="absolute -top-3 left-8 w-16 h-5 bg-[#C7D2FE]/70 rotate-[-3deg] rounded-sm shadow-sm"></div>
+            <!-- ===== Membership / Boarding-pass style card ===== -->
+            <div class="jt-glass-card mt-10 relative rounded-xl shadow-xl rotate-[1deg] select-none overflow-hidden">
 
-                <p class="uppercase tracking-[0.25em] text-xs font-bold text-slate-800 mb-4" style="font-family:'Playfair Display',serif;">
-                    Why Join
-                </p>
+                <!-- perforated divider -->
+                <div class="flex items-center justify-between px-6 pt-5">
+                    <p class="uppercase tracking-[0.3em] text-[10px] font-bold text-slate-500">Member Pass</p>
+                    <p class="uppercase tracking-[0.2em] text-[10px] font-bold text-purple-600">No. 001</p>
+                </div>
 
-                <div class="space-y-3 text-sm">
-                    <div class="flex gap-2 items-start">
-                        <span class="text-purple-600 font-bold mt-0.5">✓</span>
-                        <p class="text-slate-800 font-semibold">Track applications across all platforms</p>
+                <div class="px-6 py-5">
+                    <p class="text-2xl text-slate-800" style="font-family:'Playfair Display',serif;">Career Chronicle</p>
+                    <p class="text-xs text-slate-500 mt-1">Personal Edition &nbsp;•&nbsp; Est. Today</p>
+
+                    <div class="mt-5 border-t border-dashed border-slate-400/60 pt-4 flex items-center justify-between">
+                        <div class="space-y-1">
+                            <p class="text-[10px] uppercase tracking-widest text-slate-400">Status</p>
+                            <p class="text-sm font-bold text-purple-700">Newly Registered</p>
+                        </div>
+                        <div class="flex gap-1">
+                            <span class="w-2 h-2 rounded-full bg-[#818CF8]"></span>
+                            <span class="w-2 h-2 rounded-full bg-[#A5B4FC]"></span>
+                            <span class="w-2 h-2 rounded-full bg-[#C7D2FE]"></span>
+                        </div>
                     </div>
-                    <div class="flex gap-2 items-start">
-                        <span class="text-purple-600 font-bold mt-0.5">✓</span>
-                        <p class="text-slate-800 font-semibold">Monitor interview stages</p>
-                    </div>
-                    <div class="flex gap-2 items-start">
-                        <span class="text-purple-600 font-bold mt-0.5">✓</span>
-                        <p class="text-slate-800 font-semibold">Never miss a follow-up</p>
-                    </div>
+                </div>
+
+                <!-- perforation dots along the bottom -->
+                <div class="flex justify-between px-3 pb-2">
+                    @for ($i = 0; $i < 22; $i++)
+                        <span class="w-1 h-1 rounded-full bg-slate-300"></span>
+                    @endfor
                 </div>
             </div>
 
