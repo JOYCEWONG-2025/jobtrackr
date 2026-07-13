@@ -163,11 +163,11 @@
                 <!-- Framed Input: Email — no black focus outline -->
                 <div>
                     <label class="block text-sm font-semibold text-slate-700 mb-2">Email Address</label>
-                    <div class="flex items-center rounded-lg border-2 border-[#C7D2FE] bg-white px-4 outline-none focus-within:border-[#7C3AED] transition">
-                        <span class="text-[#818CF8] mr-3">✉</span>
+                    <div class="flex items-center rounded-2xl border-2 border-slate-300 bg-white px-4 outline-none focus-within:border-indigo-500 focus-within:ring-2 focus-within:ring-indigo-100 transition">
+                        <span class="text-indigo-400 mr-3">✉</span>
                         <input
-                            type="email" name="email" value="{{ old('email') }}" required autofocus
-                            placeholder="you@example.com"
+                            type="email" name="email" value="" required autofocus
+                                placeholder="you@example.com"
                             class="w-full py-3 border-0 bg-transparent outline-none focus:outline-none focus:ring-0 font-medium text-slate-700 placeholder-slate-400">
                     </div>
                     @error('email') <p class="mt-1 text-sm text-red-500">{{ $message }}</p> @enderror
@@ -176,8 +176,8 @@
                 <!-- Framed Input: Password — no black focus outline -->
                 <div class="mt-5">
                     <label class="block text-sm font-semibold text-slate-700 mb-2">Password</label>
-                    <div class="flex items-center rounded-lg border-2 border-[#C7D2FE] bg-white px-4 outline-none focus-within:border-[#7C3AED] transition">
-                        <span class="text-[#818CF8] mr-3">🔒</span>
+                    <div class="flex items-center rounded-2xl border-2 border-slate-300 bg-white px-4 outline-none focus-within:border-indigo-500 focus-within:ring-2 focus-within:ring-indigo-100 transition">
+                        <span class="text-indigo-400 mr-3">🔒</span>
                         <input
                             type="password" name="password" required
                             placeholder="••••••••"
