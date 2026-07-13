@@ -11,7 +11,8 @@
     .jt-field { color: #334155; }
 </style>
 
-<div class="min-h-screen flex relative overflow-hidden" style="background:linear-gradient(180deg,#DBEAFE 0%,#C7D2FE 45%,#FAF7F2 100%);">
+<div class="hidden lg:block"
+     style="position:absolute; top:0; left:0; width:50%; height:64%; pointer-events:none; background: radial-gradient(65% 65% at 35% 40%, rgba(255,253,248,0.7), transparent 70%);"></div>
 
     <!-- Full-page dot-grid overlay -->
     <div class="absolute inset-0 pointer-events-none opacity-[0.05]"
@@ -143,7 +144,7 @@
                     <div class="flex items-center rounded-lg border-2 border-[#C7D2FE] bg-white px-4 outline-none focus-within:border-[#7C3AED] transition">
                         <span class="text-[#818CF8] mr-3">🖊</span>
                         <input type="text" name="name" value="{{ old('name') }}" required autofocus
-                            placeholder="Joyce Wong"
+                            placeholder="Your Full Name"
                             class="jt-field w-full py-3 border-0 bg-transparent outline-none focus:outline-none focus:ring-0 font-medium">
                     </div>
                     <x-input-error :messages="$errors->get('name')" class="mt-1.5" />
