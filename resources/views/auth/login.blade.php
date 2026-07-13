@@ -174,7 +174,7 @@
 
             <div class="text-center">
                 <p class="uppercase tracking-[0.25em] text-xs font-bold text-slate-400 mb-2">JobTracker</p>
-                <h2 class="text-4xl text-slate-800 font-semibold drop-shadow-[0_2px_10px_rgba(255,253,248,0.3)]" style="font-family:'Playfair Display',serif;">Welcome Back</h2>
+                <h2 class="text-6xl text-slate-800 font-semibold drop-shadow-[0_2px_10px_rgba(255,253,248,0.3)]" style="font-family:'Playfair Display',serif;">Welcome Back</h2>
                 <div class="w-10 h-[2px] bg-[#C7D2FE] mx-auto mt-4"></div>
                 <p class="text-slate-600 font-semibold mt-4 text-sm">Sign in to continue your journey.</p>
             </div>
