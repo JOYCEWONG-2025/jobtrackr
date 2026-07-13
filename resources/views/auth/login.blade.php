@@ -137,7 +137,7 @@
                     </div>
                 </div>
 
-                <p class="mt-4 text-[11px] text-slate-500 font-semibold italic">tap to flip the page →</p>
+                <p class="mt-4 text-[11px] text-slate-500 font-semibold italic">Tap to flip the page →</p>
             </div>
 
         </div>
@@ -150,7 +150,7 @@
 
             <div class="text-center">
                 <p class="uppercase tracking-[0.25em] text-xs font-bold text-slate-400 mb-2">JobTracker</p>
-                <h2 class="text-5xl text-slate-800 font-semibold drop-shadow-[0_2px_10px_rgba(255,253,248,0.3)]" style="font-family:'Playfair Display',serif;">Welcome Back</h2>
+                <h2 class="text-4xl text-slate-800 font-semibold drop-shadow-[0_2px_10px_rgba(255,253,248,0.3)]" style="font-family:'Playfair Display',serif;">Welcome Back</h2>
                 <div class="w-10 h-[2px] bg-[#C7D2FE] mx-auto mt-4"></div>
                 <p class="text-slate-600 font-semibold mt-4 text-sm">Sign in to continue your journey.</p>
             </div>
@@ -206,10 +206,10 @@
                     Sign In
                 </button>
 
-                <!-- Register line — natural black text inside an enclosed white transparent row framework similar to image_19.png -->
-                <p class="mt-6 text-center text-sm text-slate-900 bg-white/70 backdrop-blur-sm rounded-full py-2.5 px-4">
+                <!-- Register line — white translucent column, natural black text -->
+                <p class="mt-6 text-center text-sm text-slate-700 bg-white/50 rounded-full py-2.5 px-4">
                     Don't have an account?
-                    <a href="{{ route('register') }}" class="text-slate-900 font-semibold hover:underline ml-1">
+                    <a href="{{ route('register') }}" class="text-slate-900 font-semibold hover:underline">
                         Register
                     </a>
                 </p>
