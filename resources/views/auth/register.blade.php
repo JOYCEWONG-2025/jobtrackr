@@ -7,17 +7,17 @@
     .jt-glass-card { background: rgba(255, 253, 248, 0.75); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); border: 1px solid rgba(203, 213, 225, 0.5); }
     .jt-card { background: rgba(250, 247, 242, 0.8); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
     .jt-register-pill { background: rgba(255, 255, 255, 0.5); }
+    .jt-chip { background: rgba(255, 253, 248, 0.65); }
+    .jt-chip-strong { background: rgba(255, 253, 248, 0.8); }
     .jt-field::placeholder { color: #94a3b8; opacity: 1; }
     .jt-field { color: #334155; }
 </style>
 
 <div class="min-h-screen flex relative overflow-hidden" style="background:linear-gradient(180deg,#DBEAFE 0%,#C7D2FE 45%,#FAF7F2 100%);">
 
-    <!-- Full-page dot-grid overlay (original login style) -->
     <div class="absolute inset-0 pointer-events-none opacity-[0.05]"
          style="background-image:radial-gradient(#000 1px,transparent 1px);background-size:3px 3px;"></div>
 
-    <!-- ===== Skyline ===== -->
     <svg class="absolute bottom-0 left-0 w-full h-[55%] pointer-events-none opacity-60" viewBox="0 0 1200 500" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
         <circle cx="1000" cy="90" r="55" fill="#FDE68A" opacity="0.55"/>
         <g fill="#FFFFFF" opacity="0.55">
@@ -63,32 +63,35 @@
         </g>
     </svg>
 
-    <!-- ===== Left Side — Membership Card concept ===== -->
+    <!-- ===== Left Side ===== -->
     <div class="hidden lg:flex w-1/2 items-center justify-center px-16 relative z-10">
         <div class="max-w-xl">
 
             <div class="mb-6">
-                <p class="uppercase tracking-[0.4em] text-[11px] text-slate-600 border-b border-slate-700/70 pb-2 inline-block">
+                <p class="jt-chip uppercase tracking-[0.4em] text-[11px] text-slate-600 inline-block px-3 py-1.5 rounded">
                     Vol. II &nbsp;•&nbsp; New Entry &nbsp;•&nbsp; Personal Edition
                 </p>
-                <p class="uppercase tracking-[0.35em] text-xs font-bold text-slate-500 mt-3">Career Chronicle</p>
+                <p class="jt-chip uppercase tracking-[0.35em] text-xs font-bold text-slate-600 mt-3 inline-block px-2 py-1 rounded">
+                    Career Chronicle
+                </p>
             </div>
 
-            <h1 class="text-5xl leading-[1.1] text-slate-800" style="font-family:'Playfair Display',serif;">
+            <h1 class="jt-chip-strong inline px-2 py-1 rounded text-5xl leading-[1.4] text-slate-800 box-decoration-clone" style="font-family:'Playfair Display',serif;">
                 Your Story<br>Starts Here
             </h1>
 
-            <p class="mt-6 text-lg text-slate-600 font-medium leading-relaxed max-w-lg">
+            <p class="jt-chip mt-6 text-lg text-slate-700 font-medium leading-relaxed max-w-lg inline px-2 py-1 rounded box-decoration-clone">
                 Create your chronicle — one home for every application, interview, and offer.
             </p>
 
             <!-- ===== Membership / Boarding-pass style card ===== -->
             <div class="jt-glass-card mt-10 relative rounded-xl shadow-xl rotate-[1deg] select-none overflow-hidden">
 
-                <!-- perforated divider -->
                 <div class="flex items-center justify-between px-6 pt-5">
                     <p class="uppercase tracking-[0.3em] text-[10px] font-bold text-slate-500">Member Pass</p>
-                    <p class="uppercase tracking-[0.2em] text-[10px] font-bold text-purple-600">No. 001</p>
+                    <p class="uppercase tracking-[0.2em] text-[10px] font-bold text-purple-600">
+                        No. {{ str_pad(\App\Models\User::count() + 1, 3, '0', STR_PAD_LEFT) }}
+                    </p>
                 </div>
 
                 <div class="px-6 py-5">
@@ -108,7 +111,6 @@
                     </div>
                 </div>
 
-                <!-- perforation dots along the bottom -->
                 <div class="flex justify-between px-3 pb-2">
                     @for ($i = 0; $i < 22; $i++)
                         <span class="w-1 h-1 rounded-full bg-slate-300"></span>
