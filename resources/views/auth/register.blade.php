@@ -18,8 +18,8 @@
          style="background-image:radial-gradient(#000 1px,transparent 1px);background-size:3px 3px;"></div>
 
     <!-- Clean scrim behind the wording block ONLY — fades out, no hard edge -->
-    <div class="hidden lg:block absolute top-0 left-0 w-1/2 h-[52%] pointer-events-none"
-         style="background: radial-gradient(65% 60% at 35% 35%, rgba(255,253,248,0.65), transparent 70%);"></div>
+   <div class="hidden lg:block"
+     style="position:absolute; top:0; left:0; width:50%; height:52%; pointer-events:none; background: radial-gradient(65% 60% at 35% 35%, rgba(255,253,248,0.7), transparent 70%);"></div>
 
     <!-- ===== Skyline ===== -->
     <svg class="absolute bottom-0 left-0 w-full h-[55%] pointer-events-none opacity-60" viewBox="0 0 1200 500" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
