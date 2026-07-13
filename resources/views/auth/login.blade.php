@@ -6,12 +6,12 @@
 <div class="min-h-screen flex relative overflow-hidden" style="background:linear-gradient(180deg,#DBEAFE 0%,#C7D2FE 45%,#FAF7F2 100%);">
 
     <!-- ===== Background Textures ===== -->
-    
-    <!-- Header Layer: Moiré Grid Pattern (Only fills the sky space down to 45% height) -->
+
+    <!-- Header Layer: Moiré Grid Pattern -->
     <div class="absolute top-0 left-0 w-full h-[45%] pointer-events-none opacity-[0.05]"
          style="background-image: linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px); background-size: 3px 3px;"></div>
 
-    <!-- Footer Layer: Clean Repeating Dot Pattern (Positioned below the city skyline baseline) -->
+    <!-- Footer Layer: Clean Repeating Dot Pattern -->
     <div class="absolute bottom-0 left-0 w-full h-[12%] pointer-events-none opacity-[0.07]"
          style="background-image: radial-gradient(#000 1.5px, transparent 1.5px); background-size: 8px 8px;"></div>
 
@@ -65,12 +65,10 @@
     <div class="hidden lg:flex w-1/2 items-center justify-center px-16 relative z-10">
         <div class="max-w-xl">
 
-            <!-- Masthead Layout Header without frame / with underline -->
             <div class="mb-6">
                 <p class="uppercase tracking-[0.4em] text-[11px] text-slate-600 border-b border-slate-700/70 pb-2 inline-block">
                     Vol. I &nbsp;•&nbsp; Est. Today &nbsp;•&nbsp; Personal Edition
                 </p>
-                <!-- Career Chronicle perfectly placed on the next line -->
                 <p class="uppercase tracking-[0.35em] text-xs font-bold text-slate-500 mt-3">Career Chronicle</p>
             </div>
 
@@ -82,7 +80,7 @@
                 Keep your applications, interviews and offers organized in one place.
             </p>
 
-            <!-- ===== Interactive Journal Card (Translucent backdrop + semibold fonts) ===== -->
+            <!-- ===== Interactive Journal Card ===== -->
             <div
                 x-data="{
                     sets: [
@@ -145,14 +143,14 @@
         </div>
     </div>
 
-    <!-- ===== Right Side — Login Card (Clean crisp window, with solid black outline from pic 2) ===== -->
+    <!-- ===== Right Side — Login Card ===== -->
     <div class="w-full lg:w-1/2 flex items-center justify-center p-8 relative z-10">
 
         <div class="w-full max-w-md bg-[#FAF7F2]/80 backdrop-blur-md rounded-2xl p-10 shadow-2xl border-2 border-slate-900">
 
             <div class="text-center">
                 <p class="uppercase tracking-[0.25em] text-xs font-bold text-slate-400 mb-2">JobTracker</p>
-                <h2 class="text-4xl text-slate-800 font-semibold" style="font-family:'Playfair Display',serif;">Welcome Back</h2>
+                <h2 class="text-4xl text-slate-800 font-semibold drop-shadow-[0_2px_10px_rgba(255,253,248,0.3)]" style="font-family:'Playfair Display',serif;">Welcome Back</h2>
                 <div class="w-10 h-[2px] bg-[#C7D2FE] mx-auto mt-4"></div>
                 <p class="text-slate-600 font-semibold mt-4 text-sm">Sign in to continue your journey.</p>
             </div>
@@ -162,28 +160,28 @@
             <form method="POST" action="{{ route('login') }}" class="mt-8">
                 @csrf
 
-                <!-- Framed Input: Email -->
+                <!-- Framed Input: Email — no black focus outline -->
                 <div>
                     <label class="block text-sm font-semibold text-slate-700 mb-2">Email Address</label>
-                    <div class="flex items-center rounded-lg border-2 border-[#C7D2FE] bg-white px-4 focus-within:border-[#7C3AED] transition">
+                    <div class="flex items-center rounded-lg border-2 border-[#C7D2FE] bg-white px-4 outline-none focus-within:border-[#7C3AED] transition">
                         <span class="text-[#818CF8] mr-3">✉</span>
                         <input
                             type="email" name="email" value="{{ old('email') }}" required autofocus
                             placeholder="you@example.com"
-                            class="w-full py-3 border-0 bg-transparent focus:ring-0 font-medium text-slate-700 placeholder-slate-400">
+                            class="w-full py-3 border-0 bg-transparent outline-none focus:outline-none focus:ring-0 font-medium text-slate-700 placeholder-slate-400">
                     </div>
                     @error('email') <p class="mt-1 text-sm text-red-500">{{ $message }}</p> @enderror
                 </div>
 
-                <!-- Framed Input: Password -->
+                <!-- Framed Input: Password — no black focus outline -->
                 <div class="mt-5">
                     <label class="block text-sm font-semibold text-slate-700 mb-2">Password</label>
-                    <div class="flex items-center rounded-lg border-2 border-[#C7D2FE] bg-white px-4 focus-within:border-[#7C3AED] transition">
+                    <div class="flex items-center rounded-lg border-2 border-[#C7D2FE] bg-white px-4 outline-none focus-within:border-[#7C3AED] transition">
                         <span class="text-[#818CF8] mr-3">🔒</span>
                         <input
                             type="password" name="password" required
                             placeholder="••••••••"
-                            class="w-full py-3 border-0 bg-transparent focus:ring-0 font-medium text-slate-700 placeholder-slate-400">
+                            class="w-full py-3 border-0 bg-transparent outline-none focus:outline-none focus:ring-0 font-medium text-slate-700 placeholder-slate-400">
                     </div>
                 </div>
 
@@ -208,13 +206,13 @@
                     Sign In
                 </button>
 
-                <!-- Footer element inside the card styled with White text inside an enclosed row framework -->
-                <div class="text-center mt-6 bg-[#7C3AED] py-2.5 px-4 rounded-xl shadow-inner text-sm text-white font-semibold">
+                <!-- Register line — white translucent column, natural black text -->
+                <p class="mt-6 text-center text-sm text-slate-700 bg-white/50 rounded-full py-2.5 px-4">
                     Don't have an account?
-                    <a href="{{ route('register') }}" class="text-white font-extrabold underline hover:text-slate-200 ml-1">
+                    <a href="{{ route('register') }}" class="text-slate-900 font-semibold hover:underline">
                         Register
                     </a>
-                </div>
+                </p>
             </form>
 
         </div>
