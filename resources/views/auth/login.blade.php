@@ -3,6 +3,26 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
+<style>
+    /* Guaranteed-to-render fallbacks — independent of Tailwind's compiled utility classes */
+    .jt-glass-card {
+        background: rgba(255, 253, 248, 0.75);
+        -webkit-backdrop-filter: blur(8px);
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(203, 213, 225, 0.5);
+    }
+    .jt-register-pill {
+        background: rgba(255, 255, 255, 0.5);
+    }
+    .jt-field::placeholder {
+        color: #94a3b8;
+        opacity: 1;
+    }
+    .jt-field {
+        color: #334155;
+    }
+</style>
+
 <div class="min-h-screen flex relative overflow-hidden" style="background:linear-gradient(180deg,#DBEAFE 0%,#C7D2FE 45%,#FAF7F2 100%);">
 
     <!-- ===== Background Textures ===== -->
@@ -80,7 +100,7 @@
                 Keep your applications, interviews and offers organized in one place.
             </p>
 
-            <!-- ===== Interactive Journal Card — auto-cycles, no tap needed ===== -->
+            <!-- ===== Interactive Journal Card — auto-cycles, glass now guaranteed to render ===== -->
             <div
                 x-data="{
                     sets: [
@@ -113,7 +133,7 @@
                     }
                 }"
                 x-init="setInterval(() => next(), 4000)"
-                class="mt-10 relative bg-[#FFFDF8]/75 backdrop-blur-md rounded-xl p-6 shadow-xl border border-slate-300/50 rotate-[-1deg] select-none"
+                class="jt-glass-card mt-10 relative rounded-xl p-6 shadow-xl rotate-[-1deg] select-none"
             >
                 <div class="absolute -top-3 left-8 w-16 h-5 bg-[#C7D2FE]/70 rotate-[-3deg] rounded-sm shadow-sm"></div>
 
@@ -136,7 +156,6 @@
                     </div>
                 </div>
 
-                <!-- progress dots instead of the tap hint -->
                 <div class="flex gap-1.5 mt-4">
                     <template x-for="(s, idx) in sets" :key="idx">
                         <span class="h-1.5 rounded-full transition-all duration-300"
@@ -165,7 +184,7 @@
             <form method="POST" action="{{ route('login') }}" class="mt-8">
                 @csrf
 
-                <!-- Framed Input: Email — no black focus outline -->
+                <!-- Framed Input: Email — placeholder now guaranteed via .jt-field -->
                 <div>
                     <label class="block text-sm font-semibold text-slate-700 mb-2">Email Address</label>
                     <div class="flex items-center rounded-lg border-2 border-[#C7D2FE] bg-white px-4 outline-none focus-within:border-[#7C3AED] transition">
@@ -173,12 +192,12 @@
                         <input
                             type="email" name="email" value="{{ old('email') }}" required autofocus
                             placeholder="you@example.com"
-                            class="w-full py-3 border-0 bg-transparent outline-none focus:outline-none focus:ring-0 font-medium text-slate-700 placeholder-slate-400">
+                            class="jt-field w-full py-3 border-0 bg-transparent outline-none focus:outline-none focus:ring-0 font-medium">
                     </div>
                     @error('email') <p class="mt-1 text-sm text-red-500">{{ $message }}</p> @enderror
                 </div>
 
-                <!-- Framed Input: Password — no black focus outline -->
+                <!-- Framed Input: Password — placeholder now guaranteed via .jt-field -->
                 <div class="mt-5">
                     <label class="block text-sm font-semibold text-slate-700 mb-2">Password</label>
                     <div class="flex items-center rounded-lg border-2 border-[#C7D2FE] bg-white px-4 outline-none focus-within:border-[#7C3AED] transition">
@@ -186,7 +205,7 @@
                         <input
                             type="password" name="password" required
                             placeholder="••••••••"
-                            class="w-full py-3 border-0 bg-transparent outline-none focus:outline-none focus:ring-0 font-medium text-slate-700 placeholder-slate-400">
+                            class="jt-field w-full py-3 border-0 bg-transparent outline-none focus:outline-none focus:ring-0 font-medium">
                     </div>
                 </div>
 
@@ -211,8 +230,8 @@
                     Sign In
                 </button>
 
-                <!-- Register line — white translucent column, natural black text -->
-                <p class="mt-6 text-center text-sm text-slate-700 bg-white/50 rounded-full py-2.5 px-4">
+                <!-- Register line — glass pill now guaranteed via .jt-register-pill -->
+                <p class="jt-register-pill mt-6 text-center text-sm text-slate-700 rounded-full py-2.5 px-4">
                     Don't have an account?
                     <a href="{{ route('register') }}" class="text-slate-900 font-semibold hover:underline">
                         Register
