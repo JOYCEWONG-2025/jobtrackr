@@ -80,7 +80,7 @@
                 Keep your applications, interviews and offers organized in one place.
             </p>
 
-            <!-- ===== Interactive Journal Card ===== -->
+            <!-- ===== Interactive Journal Card — auto-cycles, no tap needed ===== -->
             <div
                 x-data="{
                     sets: [
@@ -112,13 +112,12 @@
                         setTimeout(() => { this.i = (this.i + 1) % this.sets.length; this.show = true; }, 150);
                     }
                 }"
-                @click="next()"
-                class="mt-10 relative bg-[#FFFDF8]/75 backdrop-blur-md rounded-xl p-6 shadow-xl border border-slate-300/50 rotate-[-1deg] cursor-pointer select-none hover:shadow-2xl transition"
-                title="Click to see more"
+                x-init="setInterval(() => next(), 4000)"
+                class="mt-10 relative bg-[#FFFDF8]/75 backdrop-blur-md rounded-xl p-6 shadow-xl border border-slate-300/50 rotate-[-1deg] select-none"
             >
                 <div class="absolute -top-3 left-8 w-16 h-5 bg-[#C7D2FE]/70 rotate-[-3deg] rounded-sm shadow-sm"></div>
 
-                <div x-show="show" x-transition.opacity.duration.200ms>
+                <div x-show="show" x-transition.opacity.duration.300ms>
                     <div class="flex items-center gap-2 mb-4">
                         <p class="uppercase tracking-[0.25em] text-xs font-bold text-slate-800 whitespace-nowrap" style="font-family:'Playfair Display',serif;" x-text="sets[i].title"></p>
                     </div>
@@ -137,7 +136,13 @@
                     </div>
                 </div>
 
-                <p class="mt-4 text-[11px] text-slate-500 font-semibold italic">Tap to flip the page →</p>
+                <!-- progress dots instead of the tap hint -->
+                <div class="flex gap-1.5 mt-4">
+                    <template x-for="(s, idx) in sets" :key="idx">
+                        <span class="h-1.5 rounded-full transition-all duration-300"
+                              :class="idx === i ? 'w-4 bg-[#7C3AED]' : 'w-1.5 bg-slate-300'"></span>
+                    </template>
+                </div>
             </div>
 
         </div>
@@ -163,11 +168,11 @@
                 <!-- Framed Input: Email — no black focus outline -->
                 <div>
                     <label class="block text-sm font-semibold text-slate-700 mb-2">Email Address</label>
-                    <div class="flex items-center rounded-2xl border-2 border-slate-300 bg-white px-4 outline-none focus-within:border-indigo-500 focus-within:ring-2 focus-within:ring-indigo-100 transition">
-                        <span class="text-indigo-400 mr-3">✉</span>
+                    <div class="flex items-center rounded-lg border-2 border-[#C7D2FE] bg-white px-4 outline-none focus-within:border-[#7C3AED] transition">
+                        <span class="text-[#818CF8] mr-3">✉</span>
                         <input
-                            type="email" name="email" value="" required autofocus
-                                placeholder="you@example.com"
+                            type="email" name="email" value="{{ old('email') }}" required autofocus
+                            placeholder="you@example.com"
                             class="w-full py-3 border-0 bg-transparent outline-none focus:outline-none focus:ring-0 font-medium text-slate-700 placeholder-slate-400">
                     </div>
                     @error('email') <p class="mt-1 text-sm text-red-500">{{ $message }}</p> @enderror
@@ -176,8 +181,8 @@
                 <!-- Framed Input: Password — no black focus outline -->
                 <div class="mt-5">
                     <label class="block text-sm font-semibold text-slate-700 mb-2">Password</label>
-                    <div class="flex items-center rounded-2xl border-2 border-slate-300 bg-white px-4 outline-none focus-within:border-indigo-500 focus-within:ring-2 focus-within:ring-indigo-100 transition">
-                        <span class="text-indigo-400 mr-3">🔒</span>
+                    <div class="flex items-center rounded-lg border-2 border-[#C7D2FE] bg-white px-4 outline-none focus-within:border-[#7C3AED] transition">
+                        <span class="text-[#818CF8] mr-3">🔒</span>
                         <input
                             type="password" name="password" required
                             placeholder="••••••••"
