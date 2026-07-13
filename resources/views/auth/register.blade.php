@@ -68,19 +68,17 @@
         <div class="max-w-xl">
 
             <div class="mb-6">
-                <p class="jt-chip uppercase tracking-[0.4em] text-[11px] text-slate-600 inline-block px-3 py-1.5 rounded">
+                <p class="uppercase tracking-[0.4em] text-[11px] text-slate-600 border-b border-slate-700/70 pb-2 inline-block">
                     Vol. II &nbsp;•&nbsp; New Entry &nbsp;•&nbsp; Personal Edition
                 </p>
-                <p class="jt-chip uppercase tracking-[0.35em] text-xs font-bold text-slate-600 mt-3 inline-block px-2 py-1 rounded">
-                    Career Chronicle
-                </p>
+                <p class="uppercase tracking-[0.35em] text-xs font-bold text-slate-500 mt-3">Career Chronicle</p>
             </div>
 
-            <h1 class="jt-chip-strong inline px-2 py-1 rounded text-5xl leading-[1.4] text-slate-800 box-decoration-clone" style="font-family:'Playfair Display',serif;">
+            <h1 class="text-5xl leading-[1.1] text-slate-800" style="font-family:'Playfair Display',serif;">
                 Your Story<br>Starts Here
             </h1>
 
-            <p class="jt-chip mt-6 text-lg text-slate-700 font-medium leading-relaxed max-w-lg inline px-2 py-1 rounded box-decoration-clone">
+            <p class="mt-6 text-lg text-slate-600 font-medium leading-relaxed max-w-lg">
                 Create your chronicle — one home for every application, interview, and offer.
             </p>
 
